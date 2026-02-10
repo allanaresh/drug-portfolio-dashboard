@@ -39,7 +39,6 @@ export function DataProvider({ children }: { children: ReactNode }) {
     setPrograms(data.programs);
     setProgramDetails(data.programDetails);
     setIsInitialized(true);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
   }, []);
 
   const updateProgram = (id: string, updates: Partial<Program>) => {

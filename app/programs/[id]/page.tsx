@@ -34,7 +34,7 @@ export default function ProgramDetailPage() {
             Program not found
           </h2>
           <p className="text-gray-500 mb-4">
-            The program you're looking for doesn't exist.
+            The program you are looking for does not exist.
           </p>
           <button
             onClick={() => router.push("/")}

@@ -28,7 +28,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(JSON.parse(savedUser));
     }
     setIsInitialized(true);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
   }, []);
 
   const login = (role: UserRole) => {
