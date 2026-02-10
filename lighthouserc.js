@@ -5,7 +5,7 @@ module.exports = {
     collect: {
       startServerCommand: "npm run start",
       url: ["http://localhost:3000"],
-      numberOfRuns: 1,
+      numberOfRuns: 3,
     },
 
     assert: {
