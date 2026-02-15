@@ -3,6 +3,7 @@ import "./globals.css";
 import { AuthProvider } from "@/lib/AuthContext";
 import { DataProvider } from "@/lib/DataContext";
 import Header from "@/components/Header";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Drug Development Portfolio Dashboard",
@@ -26,6 +27,7 @@ export default function RootLayout({
             </div>
           </DataProvider>
         </AuthProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
