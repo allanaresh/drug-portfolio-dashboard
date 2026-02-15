@@ -8,6 +8,7 @@ import ProgramCard from "@/components/ProgramCard";
 export default function DashboardPage() {
   const { getFilteredPrograms, programs } = useData();
   const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const filteredPrograms = getFilteredPrograms();
   const totalPrograms = programs.length;
@@ -23,30 +24,65 @@ export default function DashboardPage() {
     programs.length > 0 ? ((totalSpent / totalBudget) * 100).toFixed(1) : "0";
 
   return (
-    <div className="flex h-[calc(100vh-73px)]">
+    <div className="flex flex-col lg:flex-row h-[calc(100vh-73px)]">
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Filter Sidebar */}
-      <aside className="w-80 flex-shrink-0">
+      <aside
+        className={`fixed lg:static top-[73px] left-0 w-80 h-[calc(100vh-73px)] z-50 transform transition-transform duration-300 ease-in-out lg:transform-none lg:flex-shrink-0 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+      >
         <FilterPanel />
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="p-6">
+      <div className="flex-1 overflow-y-auto w-full lg:w-auto">
+        <div className="p-4 sm:p-6">
+          {/* Mobile Filter Button */}
+          <div className="mb-4 lg:hidden">
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="w-full px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 flex items-center justify-center space-x-2"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                />
+              </svg>
+              <span>Filters</span>
+            </button>
+          </div>
+
           {/* Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600">
                     Total Programs
                   </p>
-                  <p className="text-3xl font-bold text-gray-900 mt-2">
+                  <p className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">
                     {totalPrograms}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-100 rounded-lg flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-primary-600"
+                    className="w-5 sm:w-6 h-5 sm:h-6 text-primary-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -62,19 +98,19 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600">
                     Active Programs
                   </p>
-                  <p className="text-3xl font-bold text-gray-900 mt-2">
+                  <p className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">
                     {activePrograms}
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-green-600"
+                    className="w-5 sm:w-6 h-5 sm:h-6 text-green-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -90,19 +126,19 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600">
                     Total Budget
                   </p>
-                  <p className="text-3xl font-bold text-gray-900 mt-2">
+                  <p className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">
                     ${(totalBudget / 1000000).toFixed(0)}M
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-yellow-600"
+                    className="w-5 sm:w-6 h-5 sm:h-6 text-yellow-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -118,19 +154,19 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">
+                  <p className="text-xs sm:text-sm font-medium text-gray-600">
                     Avg Utilization
                   </p>
-                  <p className="text-3xl font-bold text-gray-900 mt-2">
+                  <p className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2">
                     {avgUtilization}%
                   </p>
                 </div>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-purple-600"
+                    className="w-5 sm:w-6 h-5 sm:h-6 text-purple-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -148,18 +184,18 @@ export default function DashboardPage() {
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 className="text-lg sm:text-2xl font-bold text-gray-900">
                 Programs
-                <span className="ml-3 text-lg font-normal text-gray-500">
+                <span className="ml-2 sm:ml-3 text-sm sm:text-lg font-normal text-gray-500">
                   ({filteredPrograms.length}{" "}
                   {filteredPrograms.length === 1 ? "result" : "results"})
                 </span>
               </h2>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 w-full sm:w-auto">
               <button
                 onClick={() => setViewMode("grid")}
                 className={`p-2 rounded-lg ${
@@ -211,9 +247,9 @@ export default function DashboardPage() {
 
           {/* Programs Grid */}
           {filteredPrograms.length === 0 ? (
-            <div className="bg-white rounded-lg border border-gray-200 p-12 text-center">
+            <div className="bg-white rounded-lg border border-gray-200 p-6 sm:p-12 text-center">
               <svg
-                className="mx-auto h-12 w-12 text-gray-400 mb-4"
+                className="mx-auto h-8 sm:h-12 w-8 sm:w-12 text-gray-400 mb-4"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -225,40 +261,40 @@ export default function DashboardPage() {
                   d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
                 />
               </svg>
-              <h3 className="text-lg font-medium text-gray-900 mb-1">
+              <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-1">
                 No programs found
               </h3>
-              <p className="text-gray-500">
+              <p className="text-sm sm:text-base text-gray-500">
                 Try adjusting your filters or search query
               </p>
             </div>
           ) : viewMode === "grid" ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {filteredPrograms.map((program) => (
                 <ProgramCard key={program.id} program={program} />
               ))}
             </div>
           ) : (
-            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <div className="bg-white rounded-lg border border-gray-200 overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Code
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                       Name
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
                       Phase
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                       Therapeutic Area
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                       Lead
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Budget
                     </th>
                   </tr>
@@ -272,22 +308,22 @@ export default function DashboardPage() {
                         (window.location.href = `/programs/${program.id}`)
                       }
                     >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-900">
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm font-mono text-gray-900">
                         {program.code}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-900 hidden sm:table-cell">
                         <div className="line-clamp-2">{program.name}</div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 hidden md:table-cell">
                         {program.phase}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 hidden lg:table-cell">
                         {program.therapeuticArea}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 hidden lg:table-cell">
                         {program.projectLead}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-3 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900">
                         ${(program.budget / 1000000).toFixed(1)}M
                       </td>
                     </tr>
