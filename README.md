@@ -11,7 +11,7 @@ The Drug Development Portfolio Dashboard enables clinical R&D organizations to e
 - **Comprehensive Program Management**: Browse, search, and filter drug development programs
 - **Rich Analytics**: Portfolio metrics, phase distribution, budget analysis
 - **Advanced Filtering**: Multi-criteria filtering by therapeutic area, phase, and priority
-- **Responsive Design**: Optimized for desktop and tablet devices (1024px+)
+- **Responsive Design**: Optimized for desktop, tablet and mobile devices (1024px+)
 - **Role-Based Access Control**: Viewer, Editor, and Admin roles
 - **WCAG 2.1 Level AA Compliant**: Full keyboard navigation, screen reader support
 - **High Performance**: Optimized for handling 1000+ programs

@@ -15,7 +15,7 @@ The Drug Development Portfolio Dashboard is a comprehensive web-based applicatio
 
 - Real-time data filtering and search
 - Role-based access control
-- Responsive design for desktop and tablet devices
+- Responsive design for desktop, mobile and tablet devices
 - Comprehensive analytics dashboard
 - WCAG 2.1 Level AA compliant accessibility
 

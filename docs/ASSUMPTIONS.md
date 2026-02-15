@@ -539,10 +539,6 @@ This document outlines the assumptions made during development and the reasoning
 - Better use of screen space for complex data
 - Matches primary use case
 - Easier data table design
-- Less accessible on mobile
-- Requires responsive design work for mobile
-
-**When to Reconsider**: If mobile usage becomes significant.
 
 ---
 
