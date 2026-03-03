@@ -52,70 +52,70 @@ export default function AnalyticsPage() {
   const maxCount = Math.max(...phaseDistribution.map((d) => d.count));
 
   return (
-    <div className="min-h-[calc(100vh-73px)] bg-gray-50 p-6">
+    <div className="min-h-[calc(100vh-73px)] bg-gray-50 p-4 sm:p-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
             Portfolio Analytics
           </h1>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600">
             Comprehensive insights into your drug development portfolio
           </p>
         </div>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-sm font-medium text-gray-600 mb-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-6 sm:mb-8">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-2">
               Total Portfolio Value
             </h3>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-xl sm:text-3xl font-bold text-gray-900">
               ${(totalBudget / 1000000000).toFixed(2)}B
             </p>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
               Across {programs.length} programs
             </p>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-sm font-medium text-gray-600 mb-2">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-2">
               Total Spend
             </h3>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-xl sm:text-3xl font-bold text-gray-900">
               ${(totalSpent / 1000000000).toFixed(2)}B
             </p>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
               {((totalSpent / totalBudget) * 100).toFixed(1)}% of budget
             </p>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-sm font-medium text-gray-600 mb-2">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <h3 className="text-xs sm:text-sm font-medium text-gray-600 mb-2">
               Remaining Budget
             </h3>
-            <p className="text-3xl font-bold text-gray-900">
+            <p className="text-xl sm:text-3xl font-bold text-gray-900">
               ${((totalBudget - totalSpent) / 1000000000).toFixed(2)}B
             </p>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
               Available for allocation
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
           {/* Phase Distribution */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-6">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">
               Programs by Development Phase
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {phaseDistribution.map((item) => (
                 <div key={item.phase}>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-xs sm:text-sm font-medium text-gray-700">
                       {item.phase}
                     </span>
-                    <span className="text-sm font-semibold text-gray-900">
+                    <span className="text-xs sm:text-sm font-semibold text-gray-900">
                       {item.count}
                     </span>
                   </div>
@@ -131,20 +131,20 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Therapeutic Area Distribution */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-6">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">
               Programs by Therapeutic Area
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {therapeuticAreaDistribution
                 .sort((a, b) => b.count - a.count)
                 .map((item) => (
                   <div key={item.area}>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-xs sm:text-sm font-medium text-gray-700">
                         {item.area}
                       </span>
-                      <span className="text-sm font-semibold text-gray-900">
+                      <span className="text-xs sm:text-sm font-semibold text-gray-900">
                         {item.count}
                       </span>
                     </div>
@@ -162,21 +162,21 @@ export default function AnalyticsPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
           {/* Priority Distribution */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-6">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">
               Programs by Priority
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {priorityDistribution.map((item) => (
                 <div
                   key={item.priority}
-                  className="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
+                  className="flex items-center justify-between p-3 sm:p-4 border border-gray-200 rounded-lg"
                 >
                   <div className="flex items-center">
                     <div
-                      className={`w-4 h-4 rounded-full mr-3 ${
+                      className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full mr-2 sm:mr-3 ${
                         item.priority === "High"
                           ? "bg-red-500"
                           : item.priority === "Medium"
@@ -184,11 +184,11 @@ export default function AnalyticsPage() {
                             : "bg-gray-500"
                       }`}
                     />
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-xs sm:text-sm font-medium text-gray-700">
                       {item.priority} Priority
                     </span>
                   </div>
-                  <span className="text-2xl font-bold text-gray-900">
+                  <span className="text-lg sm:text-2xl font-bold text-gray-900">
                     {item.count}
                   </span>
                 </div>
@@ -197,21 +197,21 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Budget by Phase */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-6">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 sm:mb-6">
               Budget Allocation by Phase
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {budgetByPhase
                 .filter((item) => item.budget > 0)
                 .sort((a, b) => b.budget - a.budget)
                 .map((item) => (
                   <div key={item.phase}>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-xs sm:text-sm font-medium text-gray-700">
                         {item.phase}
                       </span>
-                      <span className="text-sm font-semibold text-gray-900">
+                      <span className="text-xs sm:text-sm font-semibold text-gray-900">
                         ${(item.budget / 1000000).toFixed(1)}M
                       </span>
                     </div>
@@ -236,8 +236,8 @@ export default function AnalyticsPage() {
 
         {/* Top Programs Table */}
         <div className="bg-white rounded-lg border border-gray-200">
-          <div className="px-6 py-4 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900">
+          <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900">
               Top Programs by Budget
             </h3>
           </div>
@@ -245,22 +245,22 @@ export default function AnalyticsPage() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Program
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                     Phase
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
                     Therapeutic Area
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Budget
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                     Spent
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-2 sm:py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Utilization
                   </th>
                 </tr>
@@ -271,37 +271,34 @@ export default function AnalyticsPage() {
                   .slice(0, 10)
                   .map((program) => (
                     <tr key={program.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
+                        <div className="text-xs sm:text-sm font-medium text-gray-900">
                           {program.code}
                         </div>
-                        <div className="text-sm text-gray-500 line-clamp-1">
+                        <div className="text-xs text-gray-500 line-clamp-1">
                           {program.name}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 hidden sm:table-cell">
                         {program.phase}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 hidden md:table-cell">
                         {program.therapeuticArea}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900">
                         ${(program.budget / 1000000).toFixed(2)}M
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 hidden lg:table-cell">
                         ${(program.budgetSpent / 1000000).toFixed(2)}M
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="flex-1 max-w-[100px] bg-gray-200 rounded-full h-2 mr-2">
+                      <td className="px-3 sm:px-6 py-2 sm:py-4 whitespace-nowrap">
+                        <div className="flex items-center gap-1 sm:gap-2">
+                          <div className="flex-1 max-w-[60px] sm:max-w-[100px] bg-gray-200 rounded-full h-2">
                             <div
                               className={`h-full rounded-full ${
-                                (program.budgetSpent / program.budget) * 100 >
-                                80
+                                (program.budgetSpent / program.budget) * 100 > 80
                                   ? "bg-red-500"
-                                  : (program.budgetSpent / program.budget) *
-                                        100 >
-                                      60
+                                  : (program.budgetSpent / program.budget) * 100 > 60
                                     ? "bg-yellow-500"
                                     : "bg-green-500"
                               }`}
@@ -310,10 +307,9 @@ export default function AnalyticsPage() {
                               }}
                             />
                           </div>
-                          <span className="text-sm text-gray-900">
+                          <span className="text-xs sm:text-sm text-gray-900">
                             {(
-                              (program.budgetSpent / program.budget) *
-                              100
+                              (program.budgetSpent / program.budget) * 100
                             ).toFixed(0)}
                             %
                           </span>

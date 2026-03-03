@@ -119,14 +119,14 @@ export default function ProgramDetailPage() {
     <div className="min-h-[calc(100vh-73px)] bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4">
             <button
               onClick={() => router.push("/")}
-              className="flex items-center text-gray-600 hover:text-gray-900"
+              className="flex items-center text-gray-600 hover:text-gray-900 text-sm sm:text-base"
             >
               <svg
-                className="w-5 h-5 mr-2"
+                className="w-4 sm:w-5 h-4 sm:h-5 mr-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -142,18 +142,18 @@ export default function ProgramDetailPage() {
             </button>
 
             {canEdit() && (
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center gap-2 w-full sm:w-auto">
                 {isEditing ? (
                   <>
                     <button
                       onClick={handleCancel}
-                      className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+                      className="flex-1 sm:flex-none px-3 sm:px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50"
                     >
                       Cancel
                     </button>
                     <button
                       onClick={handleSave}
-                      className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700"
+                      className="flex-1 sm:flex-none px-3 sm:px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 text-sm"
                     >
                       Save Changes
                     </button>
@@ -161,10 +161,10 @@ export default function ProgramDetailPage() {
                 ) : (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 flex items-center"
+                    className="w-full sm:w-auto px-3 sm:px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 flex items-center justify-center gap-2 text-sm"
                   >
                     <svg
-                      className="w-4 h-4 mr-2"
+                      className="w-4 h-4"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -183,10 +183,10 @@ export default function ProgramDetailPage() {
             )}
           </div>
 
-          <div className="flex items-start justify-between">
+          <div className="flex flex-col sm:items-start justify-between gap-2">
             <div>
-              <div className="flex items-center space-x-3 mb-2">
-                <span className="text-sm font-mono text-gray-500">
+              <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
+                <span className="text-xs sm:text-sm font-mono text-gray-500">
                   {programDetail.code}
                 </span>
                 <span
@@ -208,10 +208,10 @@ export default function ProgramDetailPage() {
                   onChange={(e) =>
                     setEditedProgram({ ...editedProgram, name: e.target.value })
                   }
-                  className="text-3xl font-bold text-gray-900 mb-2 w-full border border-gray-300 rounded px-2 py-1"
+                  className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2 w-full border border-gray-300 rounded px-2 py-1"
                 />
               ) : (
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
                   {programDetail.name}
                 </h1>
               )}
@@ -224,11 +224,11 @@ export default function ProgramDetailPage() {
                       description: e.target.value,
                     })
                   }
-                  className="text-gray-600 w-full border border-gray-300 rounded px-2 py-1"
+                  className="text-sm sm:text-base text-gray-600 w-full border border-gray-300 rounded px-2 py-1"
                   rows={3}
                 />
               ) : (
-                <p className="text-gray-600 max-w-3xl">
+                <p className="text-sm sm:text-base text-gray-600 max-w-3xl">
                   {programDetail.description}
                 </p>
               )}
@@ -238,10 +238,10 @@ export default function ProgramDetailPage() {
       </div>
 
       {/* Key Metrics */}
-      <div className="max-w-7xl mx-auto px-6 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <p className="text-sm font-medium text-gray-600">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <p className="text-xs sm:text-sm font-medium text-gray-600">
               Development Phase
             </p>
             {isEditing ? (
@@ -262,14 +262,14 @@ export default function ProgramDetailPage() {
                 ))}
               </select>
             ) : (
-              <p className="text-2xl font-bold text-gray-900 mt-2">
+              <p className="text-lg sm:text-2xl font-bold text-gray-900 mt-2">
                 {programDetail.phase}
               </p>
             )}
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <p className="text-sm font-medium text-gray-600">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <p className="text-xs sm:text-sm font-medium text-gray-600">
               Budget Utilization
             </p>
             <p className="text-2xl font-bold text-gray-900 mt-2">
@@ -289,8 +289,8 @@ export default function ProgramDetailPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <p className="text-sm font-medium text-gray-600">
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <p className="text-xs sm:text-sm font-medium text-gray-600">
               Enrollment Progress
             </p>
             <p className="text-2xl font-bold text-gray-900 mt-2">
@@ -301,8 +301,8 @@ export default function ProgramDetailPage() {
             </p>
           </div>
 
-          <div className="bg-white rounded-lg border border-gray-200 p-6">
-            <p className="text-sm font-medium text-gray-600">Milestones</p>
+          <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6">
+            <p className="text-xs sm:text-sm font-medium text-gray-600">Milestones</p>
             <p className="text-2xl font-bold text-gray-900 mt-2">
               {completedMilestones} / {totalMilestones}
             </p>
@@ -312,11 +312,11 @@ export default function ProgramDetailPage() {
 
         {/* Tabs */}
         <div className="bg-white rounded-lg border border-gray-200">
-          <div className="border-b border-gray-200">
-            <nav className="flex space-x-8 px-6" aria-label="Tabs">
+          <div className="border-b border-gray-200 overflow-x-auto">
+            <nav className="flex gap-1 px-4 sm:px-6" aria-label="Tabs">
               <button
                 onClick={() => setActiveTab("overview")}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
                   activeTab === "overview"
                     ? "border-primary-500 text-primary-600"
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
@@ -326,7 +326,7 @@ export default function ProgramDetailPage() {
               </button>
               <button
                 onClick={() => setActiveTab("studies")}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
                   activeTab === "studies"
                     ? "border-primary-500 text-primary-600"
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
@@ -336,7 +336,7 @@ export default function ProgramDetailPage() {
               </button>
               <button
                 onClick={() => setActiveTab("milestones")}
-                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                className={`py-3 sm:py-4 px-2 sm:px-1 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap ${
                   activeTab === "milestones"
                     ? "border-primary-500 text-primary-600"
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
@@ -347,16 +347,16 @@ export default function ProgramDetailPage() {
             </nav>
           </div>
 
-          <div className="p-6">
+          <div className="p-4 sm:p-6">
             {activeTab === "overview" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">
                     Program Details
                   </h3>
-                  <dl className="space-y-4">
+                  <dl className="space-y-3 sm:space-y-4">
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">
+                      <dt className="text-xs sm:text-sm font-medium text-gray-500">
                         Therapeutic Area
                       </dt>
                       {isEditing ? (
@@ -378,7 +378,7 @@ export default function ProgramDetailPage() {
                           ))}
                         </select>
                       ) : (
-                        <dd className="mt-1 text-sm text-gray-900">
+                        <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                           {programDetail.therapeuticArea}
                         </dd>
                       )}
@@ -400,7 +400,7 @@ export default function ProgramDetailPage() {
                           className="mt-1 w-full border border-gray-300 rounded px-2 py-1"
                         />
                       ) : (
-                        <dd className="mt-1 text-sm text-gray-900">
+                        <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                           {programDetail.targetIndication}
                         </dd>
                       )}
@@ -422,7 +422,7 @@ export default function ProgramDetailPage() {
                           className="mt-1 w-full border border-gray-300 rounded px-2 py-1"
                         />
                       ) : (
-                        <dd className="mt-1 text-sm text-gray-900">
+                        <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                           {programDetail.mechanism}
                         </dd>
                       )}
@@ -444,7 +444,7 @@ export default function ProgramDetailPage() {
                           className="mt-1 w-full border border-gray-300 rounded px-2 py-1"
                         />
                       ) : (
-                        <dd className="mt-1 text-sm text-gray-900">
+                        <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                           {programDetail.projectLead}
                         </dd>
                       )}
@@ -466,7 +466,7 @@ export default function ProgramDetailPage() {
                           className="mt-1 w-full border border-gray-300 rounded px-2 py-1"
                         />
                       ) : (
-                        <dd className="mt-1 text-sm text-gray-900">
+                        <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                           {programDetail.therapeuticLead}
                         </dd>
                       )}
@@ -475,31 +475,31 @@ export default function ProgramDetailPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">
                     Financial Information
                   </h3>
-                  <dl className="space-y-4">
+                  <dl className="space-y-3 sm:space-y-4">
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">
+                      <dt className="text-xs sm:text-sm font-medium text-gray-500">
                         Total Budget
                       </dt>
-                      <dd className="mt-1 text-sm text-gray-900">
+                      <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                         ${(programDetail.budget / 1000000).toFixed(2)}M
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">
+                      <dt className="text-xs sm:text-sm font-medium text-gray-500">
                         Budget Spent
                       </dt>
-                      <dd className="mt-1 text-sm text-gray-900">
+                      <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                         ${(programDetail.budgetSpent / 1000000).toFixed(2)}M
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">
+                      <dt className="text-xs sm:text-sm font-medium text-gray-500">
                         Remaining Budget
                       </dt>
-                      <dd className="mt-1 text-sm text-gray-900">
+                      <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                         $
                         {(
                           (programDetail.budget - programDetail.budgetSpent) /
@@ -510,24 +510,24 @@ export default function ProgramDetailPage() {
                     </div>
                   </dl>
 
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 mt-8">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 mt-6 sm:mt-8">
                     Timeline
                   </h3>
-                  <dl className="space-y-4">
+                  <dl className="space-y-3 sm:space-y-4">
                     <div>
-                      <dt className="text-sm font-medium text-gray-500">
+                      <dt className="text-xs sm:text-sm font-medium text-gray-500">
                         Start Date
                       </dt>
-                      <dd className="mt-1 text-sm text-gray-900">
+                      <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                         {programDetail.startDate}
                       </dd>
                     </div>
                     {programDetail.estimatedApprovalDate && (
                       <div>
-                        <dt className="text-sm font-medium text-gray-500">
+                        <dt className="text-xs sm:text-sm font-medium text-gray-500">
                           Estimated Approval
                         </dt>
-                        <dd className="mt-1 text-sm text-gray-900">
+                        <dd className="mt-1 text-xs sm:text-sm text-gray-900">
                           {programDetail.estimatedApprovalDate}
                         </dd>
                       </div>
@@ -538,16 +538,16 @@ export default function ProgramDetailPage() {
             )}
 
             {activeTab === "studies" && (
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {programDetail.studies.map((study) => (
                   <div
                     key={study.id}
-                    className="border border-gray-200 rounded-lg p-6"
+                    className="border border-gray-200 rounded-lg p-4 sm:p-6"
                   >
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-start justify-between mb-4 gap-2">
                       <div>
-                        <div className="flex items-center space-x-3 mb-2">
-                          <h4 className="text-lg font-semibold text-gray-900">
+                        <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
+                          <h4 className="text-base sm:text-lg font-semibold text-gray-900">
                             {study.studyNumber}
                           </h4>
                           <span
@@ -556,20 +556,20 @@ export default function ProgramDetailPage() {
                             {study.status}
                           </span>
                         </div>
-                        <p className="text-gray-600">{study.title}</p>
+                        <p className="text-xs sm:text-sm text-gray-600">{study.title}</p>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4">
                       <div>
                         <p className="text-xs text-gray-500">Indication</p>
-                        <p className="text-sm font-medium text-gray-900 mt-1">
+                        <p className="text-xs sm:text-sm font-medium text-gray-900 mt-1">
                           {study.indication}
                         </p>
                       </div>
                       <div>
                         <p className="text-xs text-gray-500">Sites</p>
-                        <p className="text-sm font-medium text-gray-900 mt-1">
+                        <p className="text-xs sm:text-sm font-medium text-gray-900 mt-1">
                           {study.sitesCount}
                         </p>
                       </div>
@@ -577,7 +577,7 @@ export default function ProgramDetailPage() {
                         <p className="text-xs text-gray-500">
                           Principal Investigator
                         </p>
-                        <p className="text-sm font-medium text-gray-900 mt-1">
+                        <p className="text-xs sm:text-sm font-medium text-gray-900 mt-1">
                           {study.principalInvestigator}
                         </p>
                       </div>
@@ -585,7 +585,7 @@ export default function ProgramDetailPage() {
                         <p className="text-xs text-gray-500">
                           Primary Endpoint
                         </p>
-                        <p className="text-sm font-medium text-gray-900 mt-1">
+                        <p className="text-xs sm:text-sm font-medium text-gray-900 mt-1">
                           {study.primaryEndpoint}
                         </p>
                       </div>
@@ -593,10 +593,10 @@ export default function ProgramDetailPage() {
 
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <p className="text-sm text-gray-600">
+                        <p className="text-xs sm:text-sm text-gray-600">
                           Enrollment Progress
                         </p>
-                        <p className="text-sm font-medium text-gray-900">
+                        <p className="text-xs sm:text-sm font-medium text-gray-900">
                           {study.currentEnrollment} / {study.targetEnrollment}{" "}
                           patients
                         </p>
@@ -616,16 +616,16 @@ export default function ProgramDetailPage() {
             )}
 
             {activeTab === "milestones" && (
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {programDetail.milestones.map((milestone) => (
                   <div
                     key={milestone.id}
-                    className="border border-gray-200 rounded-lg p-6"
+                    className="border border-gray-200 rounded-lg p-4 sm:p-6"
                   >
-                    <div className="flex items-start justify-between">
+                    <div className="flex items-start justify-between gap-2">
                       <div className="flex-1">
-                        <div className="flex items-center space-x-3 mb-2">
-                          <h4 className="text-lg font-semibold text-gray-900">
+                        <div className="flex items-center gap-2 sm:gap-3 mb-2 flex-wrap">
+                          <h4 className="text-base sm:text-lg font-semibold text-gray-900">
                             {milestone.title}
                           </h4>
                           <span
@@ -634,13 +634,13 @@ export default function ProgramDetailPage() {
                             {milestone.status}
                           </span>
                         </div>
-                        <p className="text-gray-600 mb-4">
+                        <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">
                           {milestone.description}
                         </p>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                           <div>
                             <p className="text-xs text-gray-500">Target Date</p>
-                            <p className="text-sm font-medium text-gray-900 mt-1">
+                            <p className="text-xs sm:text-sm font-medium text-gray-900 mt-1">
                               {milestone.targetDate}
                             </p>
                           </div>
@@ -649,7 +649,7 @@ export default function ProgramDetailPage() {
                               <p className="text-xs text-gray-500">
                                 Completion Date
                               </p>
-                              <p className="text-sm font-medium text-gray-900 mt-1">
+                              <p className="text-xs sm:text-sm font-medium text-gray-900 mt-1">
                                 {milestone.completionDate}
                               </p>
                             </div>

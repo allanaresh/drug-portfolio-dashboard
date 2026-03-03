@@ -34,10 +34,10 @@ export default function ProgramCard({ program }: ProgramCardProps) {
   return (
     <Link href={`/programs/${program.id}`}>
       <div className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:border-primary-300 cursor-pointer h-full flex flex-col">
-        <div className="p-6 flex-1">
+        <div className="p-4 sm:p-6 flex-1">
           <div className="flex items-start justify-between mb-3">
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <span className="text-xs font-mono text-gray-500">
                   {program.code}
                 </span>
@@ -49,14 +49,14 @@ export default function ProgramCard({ program }: ProgramCardProps) {
                   {program.priority}
                 </span>
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                 {program.name}
               </h3>
             </div>
           </div>
 
-          <div className="space-y-3 mb-4">
-            <div className="flex items-center justify-between text-sm">
+          <div className="space-y-2 sm:space-y-3 mb-4">
+            <div className="flex items-center justify-between text-xs sm:text-sm">
               <span className="text-gray-600">Phase</span>
               <span
                 className={`px-2.5 py-1 rounded-full text-xs font-medium ${
@@ -67,30 +67,30 @@ export default function ProgramCard({ program }: ProgramCardProps) {
               </span>
             </div>
 
-            <div className="flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-xs sm:text-sm">
               <span className="text-gray-600">Therapeutic Area</span>
-              <span className="font-medium text-gray-900">
+              <span className="font-medium text-gray-900 text-right">
                 {program.therapeuticArea}
               </span>
             </div>
 
-            <div className="text-sm">
+            <div className="text-xs sm:text-sm">
               <span className="text-gray-600">Target Indication</span>
               <p className="font-medium text-gray-900 mt-1 line-clamp-2">
                 {program.targetIndication}
               </p>
             </div>
 
-            <div className="text-sm">
+            <div className="text-xs sm:text-sm">
               <span className="text-gray-600">Project Lead</span>
-              <p className="font-medium text-gray-900 mt-1">
+              <p className="font-medium text-gray-900 mt-1 line-clamp-1">
                 {program.projectLead}
               </p>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-gray-200">
-            <div className="flex items-center justify-between text-sm mb-2">
+          <div className="pt-3 sm:pt-4 border-t border-gray-200">
+            <div className="flex items-center justify-between text-xs sm:text-sm mb-2">
               <span className="text-gray-600">Budget Utilization</span>
               <span className="font-medium text-gray-900">
                 {budgetUtilization}%
