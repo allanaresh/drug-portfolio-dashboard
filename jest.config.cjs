@@ -10,6 +10,8 @@ const customJestConfig = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
   },
+  // ignore Playwright E2E files so Jest doesn't attempt to run them
+  testPathIgnorePatterns: ["/tests/"],
   collectCoverage: true,
   collectCoverageFrom: ["components/**/*.{ts,tsx}", "lib/**/*.{ts,tsx}"],
   coverageThreshold: {
