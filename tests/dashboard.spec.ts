@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 // helper to allow using a different host when running against CI or a preview
-const BASE = process?.env?.BASE_URL || "http://localhost:3000";
+const BASE = process.env.BASE_URL || "http://localhost:3000";
 
 test.describe("Dashboard application", () => {
   test.beforeEach(async ({ page }) => {
