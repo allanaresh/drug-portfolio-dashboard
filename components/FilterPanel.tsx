@@ -48,14 +48,14 @@ export default function FilterPanel() {
     filters.searchQuery.length > 0;
 
   return (
-    <div className="bg-white border-r border-gray-200 overflow-y-auto">
-      <div className="p-6 border-b border-gray-200">
+    <div className="bg-white border-r border-gray-200 overflow-y-auto h-full">
+      <div className="p-4 sm:p-6 border-b border-gray-200">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-gray-900">Filters</h2>
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900">Filters</h2>
           {hasActiveFilters && (
             <button
               onClick={clearAllFilters}
-              className="text-sm text-primary-600 hover:text-primary-700 font-medium"
+              className="text-xs sm:text-sm text-primary-600 hover:text-primary-700 font-medium"
             >
               Clear all
             </button>
@@ -70,10 +70,10 @@ export default function FilterPanel() {
             onChange={(e) =>
               setFilters({ ...filters, searchQuery: e.target.value })
             }
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+            className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           />
           <svg
-            className="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
+            className="absolute right-3 top-2.5 h-4 sm:h-5 w-4 sm:w-5 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -88,10 +88,10 @@ export default function FilterPanel() {
         </div>
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="p-4 sm:p-6 space-y-5 sm:space-y-6">
         {/* Therapeutic Areas */}
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-3">
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-900 mb-3">
             Therapeutic Area
           </h3>
           <div className="space-y-2">
@@ -104,9 +104,9 @@ export default function FilterPanel() {
                   type="checkbox"
                   checked={filters.therapeuticAreas.includes(area)}
                   onChange={() => handleTherapeuticAreaToggle(area)}
-                  className="h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                  className="h-3 w-3 sm:h-4 sm:w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
                 />
-                <span className="ml-3 text-sm text-gray-700 group-hover:text-gray-900">
+                <span className="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-700 group-hover:text-gray-900">
                   {area}
                 </span>
               </label>
@@ -116,7 +116,7 @@ export default function FilterPanel() {
 
         {/* Development Phase */}
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-3">
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-900 mb-3">
             Development Phase
           </h3>
           <div className="space-y-2">
@@ -129,9 +129,9 @@ export default function FilterPanel() {
                   type="checkbox"
                   checked={filters.phases.includes(phase)}
                   onChange={() => handlePhaseToggle(phase)}
-                  className="h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                  className="h-3 w-3 sm:h-4 sm:w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
                 />
-                <span className="ml-3 text-sm text-gray-700 group-hover:text-gray-900">
+                <span className="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-700 group-hover:text-gray-900">
                   {phase}
                 </span>
               </label>
@@ -141,7 +141,7 @@ export default function FilterPanel() {
 
         {/* Priority */}
         <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-3">Priority</h3>
+          <h3 className="text-xs sm:text-sm font-semibold text-gray-900 mb-3">Priority</h3>
           <div className="space-y-2">
             {priorities.map((priority) => (
               <label
@@ -152,9 +152,9 @@ export default function FilterPanel() {
                   type="checkbox"
                   checked={filters.priorities.includes(priority)}
                   onChange={() => handlePriorityToggle(priority)}
-                  className="h-4 w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
+                  className="h-3 w-3 sm:h-4 sm:w-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500"
                 />
-                <span className="ml-3 text-sm text-gray-700 group-hover:text-gray-900">
+                <span className="ml-2 sm:ml-3 text-xs sm:text-sm text-gray-700 group-hover:text-gray-900">
                   {priority}
                 </span>
               </label>

@@ -1,20 +1,17 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-module.exports = {
+const nextJest = require("next/jest");
+
+const createJestConfig = nextJest({
+  dir: "./",
+});
+
+const customJestConfig = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
-    "\\.(css|less|sass|scss)$": "identity-obj-proxy",
-  },
-  transform: {
-    "^.+\\.(t|j)sx?$": "babel-jest",
   },
   collectCoverage: true,
-  collectCoverageFrom: [
-    "<rootDir>/components/**/*.tsx",
-    "<rootDir>/lib/**/*.ts",
-    "<rootDir>/lib/**/*.tsx",
-  ],
+  collectCoverageFrom: ["components/**/*.{ts,tsx}", "lib/**/*.{ts,tsx}"],
   coverageThreshold: {
     global: {
       branches: 90,
@@ -24,3 +21,5 @@ module.exports = {
     },
   },
 };
+
+module.exports = createJestConfig(customJestConfig);
